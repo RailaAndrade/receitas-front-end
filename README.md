@@ -35,7 +35,7 @@ Para clonar o projeto rode via HHTPS rode o comando:
 tenha certexa que a aplicação esteja rodando 
 
 
-- Have this application's [API](https://github.com/RailaAndrade/receitas-api) running
+- tenha certexa que esta aplicação esteja rodando  [API](https://github.com/RailaAndrade/receitas-api) antes de executar o cliente
 
 ```yarn start```
 
