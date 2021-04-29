@@ -1,6 +1,5 @@
-import React, { useCallback, useRef } from 'react';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
+import React, { useCallback} from 'react';
+import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -8,38 +7,29 @@ import {api} from '../../services/api';
 
 
 
-import { Container, Content, AnimationContainer, Background } from './styles';
+import { Container, Content, AnimationContainer } from './styles';
 
-import logoImg from '../../assets/logo.svg';
+import logoImg from '../../assets/cover.svg';
 
 interface SignUpFormData {
-  name: string;
-  email: string;
-  password: string;
+  nome: string;
+  login: string;
+  senha: string;
 }
 
 const SignUp: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
+
   const history = useHistory();
 
   const handleSubmit = useCallback(
-    async (data: SignUpFormData) => {
+    async (data: any) => {
       try {
-        formRef.current?.setErrors({});
+        //formRef.current?.setErrors({});
 
-        const schema = Yup.object().shape({
-          name: Yup.string().required('Nome é obrigatório'),
-          email: Yup.string()
-            .required('E-mail é obrigatório')
-            .email('Digite um e-mail válido'),
-          password: Yup.string().min(6, 'No mínimo 6 dígitos'),
-        });
+        console.log(data)
+        await api.post('/usuarios', data);
 
-        await schema.validate(data, { abortEarly: false });
-
-        await api.post('/users', data);
-
-        history.push('/sessions');
+        history.push('/');
 
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -56,20 +46,19 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <Background />
+         <img src={logoImg} alt="Receitas" />
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="GoBarber" />
-
-          <Form ref={formRef} onSubmit={handleSubmit}>
+ 
+          <Form onSubmit={handleSubmit}>
             <h1>Faça seu cadastro</h1>
 
-            <input name="name" placeholder="Nome" />
+            <Input  type="text" name="nome" placeholder="Nome" />
 
-            <input name="email"  placeholder="E-mail" />
+            <Input  type="text" name="login"  placeholder="login" />
 
-            <input
-              name="password"
+            <Input
+              name="senha"
               type="password"
               placeholder="Senha"
             />
@@ -77,7 +66,7 @@ const SignUp: React.FC = () => {
             <button type="submit">Cadastrar</button>
           </Form>
 
-          <Link to="/sessions">
+          <Link to="/">
             Voltar para logon
           </Link>
         </AnimationContainer>

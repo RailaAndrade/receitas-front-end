@@ -46,14 +46,14 @@ export function ShowReceitasModal({isOpen, onRequestClose, id_receita}:ShowModal
         setEditar(false)
         api.get<IReceita>(`/receitas/${id_receita}`, {})
           .then(response => setReceita(response.data));
-        if(isOpen){
+        /*if(isOpen){
             api.get<ICategoria>(`/categorias/${receita?.id_categorias}`, {})
             .then(response => {setCategoriaNome(response.data.nome)})
       
             
         }
-
-      }, [isOpen,receita,setReceita]);
+*/
+      }, [isOpen]);
 
 
 
@@ -111,7 +111,7 @@ export function ShowReceitasModal({isOpen, onRequestClose, id_receita}:ShowModal
             <Container onSubmit={handleEdit}>
                 <h3>{receita?.nome}</h3>
                 <br/>
-                <h5>categoria: {categoria}</h5>
+                <h5>categoria: </h5>
                 <br/>
                 <h5>ingredientes: {receita?.ingredientes}</h5>
                 <br/>

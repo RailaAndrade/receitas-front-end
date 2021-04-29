@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../services/api";
-import { Container } from "./styles";
+import { SearchInputContainer,Container } from "./styles";
 interface IReceitas{
     id:number;
     nome:string;
@@ -25,6 +25,8 @@ export function ReceitasTable({onOpenModal,Hid}:TableProps){
     const [receitas, setReceitas] = useState<IReceitas[]>([]);
     const [selectValue, setSelectValue] = useState(1);  
     const [categoria, setCategoria] = useState('');  
+    const [search, setSearch] = useState('');  
+    const [ctId,setCtId]=useState(0)
 
     
     useEffect(() => {
@@ -32,7 +34,7 @@ export function ReceitasTable({onOpenModal,Hid}:TableProps){
           .then(response => setReceitas(response.data));
       }, [onOpenModal]);
     
-   
+
     
     function handleClick(id:number):any{
 
@@ -40,24 +42,33 @@ export function ReceitasTable({onOpenModal,Hid}:TableProps){
         Hid(id)
     }
 
+
+    const filteredReceitas = receitas.filter(receita=>{
+        return receita.nome.toLowerCase().includes(search.toLowerCase())
+    })
+
     return (
         <>
-        <input type="text"  placeholder="Buscar por nome"></input>
+        <SearchInputContainer>
+
+        <input type="text"  placeholder="Buscar por título" onChange={e=>setSearch(e.target.value)}></input>
+        </SearchInputContainer>
+       
         <Container>
             
             <table>
                 <thead>
                     <tr>
                         <th>título</th>
-                        <th>categoria</th>
-                        <th>data</th>
+                        <th></th>
+                        <th>data de criação</th>
 
                     </tr>
               
                 </thead>
                 <tbody>
                 
-                {receitas.map(receita => (
+                {filteredReceitas.map(receita => (
                    
                       
                         <tr onClick={() => handleClick(receita.id)} key={receita.id} >

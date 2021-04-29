@@ -7,7 +7,7 @@ import { useAuth } from '../../hooks/auth';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
 
-import logoImg from '../../assets/cover.svg';
+import logoImg from '../../assets/receita.svg';
 
 interface SignInFormData {
   login: string;
@@ -47,7 +47,7 @@ const SignIn: React.FC = () => {
           <img src={logoImg} alt="Receitas" />
 
           <Form  onSubmit={handleSubmit}>
-            <h1>Faça seu login e acesse suas receitas Masterchef!!!</h1>
+            <h1>Faça seu login e acesse suas receitas!</h1>
 
             <Input name="login"  placeholder="login" />
 
@@ -65,7 +65,7 @@ const SignIn: React.FC = () => {
           </Link>
         </AnimationContainer>
       </Content>
-      <Background />
+
     </Container>
   );
 };

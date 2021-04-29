@@ -5,7 +5,36 @@ import styled, { keyframes } from 'styled-components';
 export const Container = styled.div`
   height: 100vh;
   display: flex;
-  align-items: stretch;
+  justify-content:center;
+
+  input{
+        width:100%;
+        padding: 0 1.5rem;
+        height:4rem;
+        border-radius:0.25rem;
+        border:1px solid #d7d7d7;
+        background:#e7e9ee;
+        font-weight:400;
+        font-size:1rem;
+
+        &::placeholder{
+            color:var(--text-body)
+        }
+        & +input{
+            margin-top:1rem;
+        }
+    }
+    button{
+        margin-top:1rem;
+        width:100%;
+        padding: 0 1.5rem;
+        height:4rem;
+        color:#fff;
+        border-radius:0.25rem;  
+        border:0;
+        background-color:#04d662;
+      
+    }
 `;
 
 export const Content = styled.div`
@@ -53,7 +82,7 @@ export const AnimationContainer = styled.div`
   > a {
     color: #ff9000;
     display: block;
-    margin-top: 24px;
+
     text-decoration: none;
     transition: color 0.3s;
     display: flex;
@@ -70,3 +99,4 @@ export const Background = styled.div`
   
   background-size: cover;
 `;
+

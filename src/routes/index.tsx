@@ -8,7 +8,7 @@ import SignUp from '../pages/SignUp';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/sessions" exact component={SignIn} />
+    <Route path="/" exact component={SignIn} />
     <Route path="/signup" component={SignUp} />
     <Route path="/dashboard" component={Dashboard} isPrivate />
    

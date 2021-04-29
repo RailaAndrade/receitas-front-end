@@ -1,11 +1,33 @@
 import styled from 'styled-components'
 
 
+export const SearchInputContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:3rem;
+    input{
+    width:80%;
+    padding: 0 1.5rem;
+    height:4rem;
+    border-radius:0.25rem;
+    border:1px solid #d7d7d7;
+    background:#e7e9ee;
+    font-weight:400;
+    font-size:1rem;
+
+    &::placeholder{
+        color:var(--text-body)
+    }
+    }
+`;
+
 export const Container = styled.div`
     margin-top:4rem;
     display:flex;
     align-items:center;
     justify-content:center;
+
 
     table{
         width:80%;
@@ -15,7 +37,7 @@ export const Container = styled.div`
             color: var(--text-body);
             font-weight:400;
             padding:1rem 2rem;
-            text-align:left;
+            text-align:center;
             line-height:1.5rem;
         }
 
@@ -24,6 +46,7 @@ export const Container = styled.div`
             border:0;
             background-color:#ffffff;
             border-radius:0.25rem;
+            text-align:center;
         }
         button{
             width:100%;
@@ -49,5 +72,5 @@ export const Container = styled.div`
         
 
     }
-    
+ 
 `
